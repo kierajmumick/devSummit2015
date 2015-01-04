@@ -34,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', routes.renderIndex);
 
 app.post('/sign-up-user', routes.signUpUser);
+app.post('/log-in-user', routes.logInUser);
 
 app.use('/users', users);
 
