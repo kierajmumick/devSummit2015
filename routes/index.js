@@ -1,3 +1,5 @@
+var request = require('request')
+
 /**
  *  User class
  */
@@ -102,11 +104,34 @@ exports.renderIndex = function(req, res) {
 }
 
 exports.callNurse = function(req, res) {
-	// call one of us
 }
 
-exports.call911 = function(req, res) {
+exports.message911 = function(req, res) {
 	// uses the user's cell phone to call 911
+	const api_key = "h2tmmsyfjkwo5yaw8dfqjmaludkzegzf";
+	const api_secret = "2q823smwtouegbojqtvfvyipnkkk3okl";
+	const phone_number = "tel:+19122460900" //make sure that this number is an AT&T number and it must be formatted with "tel:+1" and then the number with the area code.
+	const oauth_endpoint = "https://api.att.com/oauth/token";
+	const sms_endpoint = "https://api.att.com/sms/v3/messaging/outbox";
+
+	function sendSMS(mobilenumber, message, resp) {
+	    request({
+	        url: oauth_endpoint,
+	        method: "POST",
+	        headers: { "Accept": "application/json", "Content-Type": "application/x-www-form-urlencoded" },
+	        body: "grant_type=client_credentials&client_id=" + api_key + "&client_secret=" + api_secret + "&scope=SMS"
+	    } ,
+	    function (error, response, body) {
+	        request({
+	            url: sms_endpoint,
+	            method: "POST",
+	            headers: { "Authorization": "Bearer " + JSON.parse(body).access_token, "Content-Type": "application/x-www-form-urlencoded" },
+	            body: "address=" + encodeURIComponent(mobilenumber) + "&message=" + encodeURIComponent(message)
+	        } , function (error, response, body) {});
+	    });
+	}
+
+	sendSMS(phone_number, "<<First Name >> <<Last name>> has had a heart attack event at lat 45.6789  long 123.4567 on 1/3/2015 at 9:45 pm. (Sent automatically from Mi Link Heart Rate Tracking System)", false);
 }
 
 exports.allowAccess = function(req, res) {
