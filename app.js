@@ -35,6 +35,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', routes.renderIndex);
 app.get('/send-message-to-911', routes.message911)
 app.get('/call-nurse', routes.callNurse)
+app.get('/unlock-door', routes.unlockDoor)
+app.get('/null', routes.returnNull)
 
 app.post('/sign-up-user', routes.signUpUser);
 app.post('/log-in-user', routes.logInUser);

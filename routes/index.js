@@ -1,4 +1,5 @@
 var request = require('request')
+var $ = require('jquery')
 
 /**
  *  User class
@@ -43,6 +44,10 @@ function userForUsername(username) {
 		if (users[i].username == username) {return users[i];}
 	}
 	return null;
+}
+
+exports.returnNull = function(req, res) {
+	res.send(null);
 }
 
 exports.signUpUser = function(req, res) {
@@ -104,6 +109,10 @@ exports.renderIndex = function(req, res) {
 }
 
 exports.callNurse = function(req, res) {
+}
+
+exports.unlockDoor = function(req, res) {
+
 }
 
 exports.message911 = function(req, res) {
