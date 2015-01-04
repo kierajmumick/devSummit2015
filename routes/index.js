@@ -131,15 +131,13 @@ exports.message911 = function(req, res) {
 	        body: "grant_type=client_credentials&client_id=" + api_key + "&client_secret=" + api_secret + "&scope=SMS"
 	    } ,
 	    function (error, response, body) {
-	    	res.send("hello");
-	        // request({
-	        //     url: sms_endpoint,
-	        //     method: "POST",
-	        //     headers: { "Authorization": "Bearer " + JSON.parse(body).access_token, "Content-Type": "application/x-www-form-urlencoded" },
-	        //     body: "address=" + encodeURIComponent(mobilenumber) + "&message=" + encodeURIComponent(message)
-	        // } , function (error, response, body) {
-	        // 	res.send("hi");
-	        // });
+	        request({
+	            url: sms_endpoint,
+	            method: "POST",
+	            headers: { "Authorization": "Bearer " + JSON.parse(body).access_token, "Content-Type": "application/x-www-form-urlencoded" },
+	            body: "address=" + encodeURIComponent(mobilenumber) + "&message=" + encodeURIComponent(message)
+	        } , function (error, response, body) {
+	        });
 	    });
 	}
 
@@ -147,7 +145,7 @@ exports.message911 = function(req, res) {
 	var hr = d.getHours();
 	var mn = d.getMinutes();
 	sendSMS(phone_number, "Paul Brian has had a heart attack event at lat 36.1104 long -115.2067 on 1/4/2015 at " + hr + ":" + mn + " (Sent automatically from Mi Link Heart Rate Tracking System)", false);
-
+	res.send(); 
 }
 
 exports.allowAccess = function(req, res) {
