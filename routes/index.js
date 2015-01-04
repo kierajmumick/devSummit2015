@@ -134,7 +134,7 @@ exports.message911 = function(req, res) {
 	var d = new Date();
 	var hr = d.getHours();
 	var mn = d.getMinutes();
-	sendSMS(phone_number, "Paul Brian has had a heart attack event at lat 36.1104 long -115.2067 on 1/3/2015 at " + hr + ":" + mn + " (Sent automatically from Mi Link Heart Rate Tracking System)", false);
+	sendSMS(phone_number, "Paul Brian has had a heart attack event at lat 36.1104 long -115.2067 on 1/4/2015 at " + hr + ":" + mn + " (Sent automatically from Mi Link Heart Rate Tracking System)", false);
 
 }
 
