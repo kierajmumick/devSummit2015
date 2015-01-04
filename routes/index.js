@@ -44,6 +44,7 @@ function userForUsername(username) {
 }
 
 exports.signUpUser = function(req, res) {
+	console.log('signUpUser(req, res) was called');
 	var username = req.body.username;
 	var firstName = req.body.firstName;
 	var lastName = req.body.lastName;
@@ -52,7 +53,7 @@ exports.signUpUser = function(req, res) {
 
 	// make sure that the users currently don't include the username
 	var user = userForUsername(username);
-	if (user == null) {
+	if (user != null) {
 		res.send({
 			'success': false,
 			'message': 'Username already taken'
@@ -64,8 +65,10 @@ exports.signUpUser = function(req, res) {
 		res.send({
 			'success': true,
 			'username': username
-		})
+		});
 	}
+
+	console.log(users);
 }
 
 exports.logInUser = function(req, res) {
@@ -94,6 +97,7 @@ exports.logInUser = function(req, res) {
 }
 
 exports.renderIndex = function(req, res) {
+	console.log('renderIndex(req, res) called');
 	res.render('index', { title: 'Express' });
 }
 

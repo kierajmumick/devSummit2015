@@ -4,11 +4,12 @@ block content
 	h1= title
 	p Welcome to #{title}
 
+	script(src='/javascripts/home.js')
 	form(id='sign-up-form')
-		input(type='input', id='username')
-		input(type='input', id='first-name')
-		input(type='input', id='last-name')
-		input(type='password', id='password')
-		input(type='password', id='confirm-password')
-		input(type='email', id='email')
-		button(id='sign-up-button') Sign Up
+		input(type='input', id='username', placeholder='Username')
+		input(type='input', id='first-name', placeholder='First Name')
+		input(type='input', id='last-name', placeholder='Last Name')
+		input(type='password', id='password', placeholder='Password')
+		input(type='password', id='confirm-password', placeholder='Confirm Password')
+		input(type='email', id='email', placeholder='Email')
+		button(id='sign-up-button', type='button') Sign Up

@@ -11,12 +11,16 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+var m2x = new M2X('6bf4c79a33ff73cc3f48aa0665b9d2e7')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.set('port', process.env.PORT || 8080);
 
+m2x.status(function(status) {
+    console.log(status);
+})
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -27,7 +31,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.get('/', routes.renderIndex)
+app.get('/', routes.renderIndex);
+
+app.post('/sign-up-user', routes.signUpUser);
 
 app.use('/users', users);
 
