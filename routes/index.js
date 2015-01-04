@@ -131,12 +131,15 @@ exports.message911 = function(req, res) {
 	        body: "grant_type=client_credentials&client_id=" + api_key + "&client_secret=" + api_secret + "&scope=SMS"
 	    } ,
 	    function (error, response, body) {
-	        request({
-	            url: sms_endpoint,
-	            method: "POST",
-	            headers: { "Authorization": "Bearer " + JSON.parse(body).access_token, "Content-Type": "application/x-www-form-urlencoded" },
-	            body: "address=" + encodeURIComponent(mobilenumber) + "&message=" + encodeURIComponent(message)
-	        } , function (error, response, body) {});
+	    	res.send("hello");
+	        // request({
+	        //     url: sms_endpoint,
+	        //     method: "POST",
+	        //     headers: { "Authorization": "Bearer " + JSON.parse(body).access_token, "Content-Type": "application/x-www-form-urlencoded" },
+	        //     body: "address=" + encodeURIComponent(mobilenumber) + "&message=" + encodeURIComponent(message)
+	        // } , function (error, response, body) {
+	        // 	res.send("hi");
+	        // });
 	    });
 	}
 
