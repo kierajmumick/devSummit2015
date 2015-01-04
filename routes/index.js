@@ -131,7 +131,8 @@ exports.message911 = function(req, res) {
 	    });
 	}
 
-	sendSMS(phone_number, "<<First Name >> <<Last name>> has had a heart attack event at lat 44.6789  long 123.4567 on 1/3/2015 at 9:45 pm. (Sent automatically from Mi Link Heart Rate Tracking System)", false);
+	sendSMS(phone_number, "Paul Brian has had a heart attack event at lat 36.1104  long -115.2067 on 1/3/2015 at 9:45 pm. (Sent automatically from Mi Link Heart Rate Tracking System)", false);
+
 }
 
 exports.allowAccess = function(req, res) {
